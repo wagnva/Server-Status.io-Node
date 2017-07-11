@@ -17,8 +17,9 @@ server.route({
         process.stdout.write("[Server] " + request.payload.address); //does not put a newline like console.log
         check(request.payload.address)
             .then(function(response){
-                process.stdout.write((" : " + (response.alive? "Online" : "Offline") + "\n"));
-                reply(response.alive);
+                let status = response.alive? "Online" : "Offline";
+                process.stdout.write((" : " + status + "\n"));
+                reply(status);
             });
     }
 });
